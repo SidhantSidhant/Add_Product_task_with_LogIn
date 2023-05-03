@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductsService } from './products.service';
 import { map } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class AuthService {
 
   userlogin: boolean = false;
 
-  constructor(private _productsservice: ProductsService) { }
+  constructor(private _productsservice: ProductsService,  private _router : Router) { }
 
   isAuthentication() : Promise<boolean> {
     return new Promise((resolve, reject) => {
@@ -29,6 +30,7 @@ export class AuthService {
         res.forEach((element: any) => {
           if (element.login.email === email && element.login.password === password) {
             localStorage.setItem("email", email);
+            this._router.navigate(['/products']);
             return res;
           } else {
             return confirm("Invalid User name Or password")

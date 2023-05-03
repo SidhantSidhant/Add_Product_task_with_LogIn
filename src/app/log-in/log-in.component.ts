@@ -15,7 +15,7 @@ export class LogInComponent implements OnInit {
   logInForm !: FormGroup;
 
   constructor(private _authservice : AuthService,
-      private _router : Router
+    
     ) { }
 
   ngOnInit(): void {
@@ -32,7 +32,6 @@ export class LogInComponent implements OnInit {
 
   loginformSubmit() {
     this._authservice.isUserLogIn(this.formControls['email'].value, this.formControls['password'].value)
-    this._router.navigate(['/products']);
     this.logInForm.reset()
   }
 

@@ -13,9 +13,6 @@
             <div class="form-group">
                 <label for="password"><strong>password*</strong></label>
                 <input type="text" id="name" formControlName="password"  class="form-control" placeholder="password">
-                <p class="text-danger" *ngIf="formControls['password'].hasError('passwordError') && formControls['email'].touched">
-                    {{formControls['passowrd'].errors?.['passwordError']}}
-                </p>
             </div>
             <div>
                 <button class="btn btn-primary">LogIn</button>
