@@ -1,0 +1,23 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "Iphone",
+      "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam sint voluptas quia quis beatae, quos modi rerum ea accusamus animi adipisci, quo eaque atque nobis aspernatur tempore repellendus veritatis dignissimos.",
+      "login": {
+        "email": "sidhantkulkarni27@gmail.com",
+        "password": "Sid@123"
+      }
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
