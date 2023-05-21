@@ -7,16 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
 
-  constructor(private _http : HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  getProductsData() : Observable<any>{
-    let headerReq = new HttpHeaders({
-     
-    })
+  getProductsData(): Observable<any> {
     return this._http.get<any>(`http://localhost:3000/posts`);
   }
 
-  addProductsApiCall(body : any){
-    return this._http.post(`http://localhost:3000/posts`,body)
+  addProductsApiCall(body: any) {
+    return this._http.post(`http://localhost:3000/posts`, body)
   }
 }

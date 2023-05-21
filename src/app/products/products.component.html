@@ -1,3 +1,8 @@
+<header>
+    <div class="text-right">
+        <button class="btn btn-danger ml-3" (click)="isUserLogOut()" routerLink="/">LogOut</button>
+    </div>
+</header>
 <div class="row">
     <div class="col-md-8">
         <h2 class="my-4 bg-primary text-white p-3 text-capitalize">Product Count : {{product.length}}</h2>
@@ -10,7 +15,6 @@
             </div>
             <div class="card-footer text-right">
                 <button class="btn btn-primary" routerLink="/Addproduct">Add</button>
-                <button class="btn btn-danger ml-3" (click)="isUserLogOut()" routerLink="/">LogOut</button>
             </div>
         </div>
     </div>

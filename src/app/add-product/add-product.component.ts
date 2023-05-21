@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ProductsService } from '../service/products.service';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
-export class AddProductComponent implements OnInit {
+export class AddProductComponent implements OnInit, OnDestroy {
 
+  unsubscribe$: Subject<void> = new Subject();
   productForm !: FormGroup;
 
   constructor(private _productsservice: ProductsService,
@@ -29,9 +31,14 @@ export class AddProductComponent implements OnInit {
 
   createProductForm(): void {
     let obj = this.productForm.value;
-    this._productsservice.addProductsApiCall(obj).subscribe((data) => {
+    this._productsservice.addProductsApiCall(obj).pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
     })
     this.productForm.reset();
     this._router.navigate(["/products"])
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete()
   }
 }

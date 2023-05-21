@@ -10,11 +10,11 @@ export class AuthService {
 
   userlogin: boolean = false;
 
-  constructor(private _productsservice: ProductsService,  private _router : Router) { }
+  constructor(private _productsservice: ProductsService, private _router: Router) { }
 
-  isAuthentication() : Promise<boolean> {
+  isAuthentication(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.userlogin = localStorage.getItem("email") ? true : false; 
+      this.userlogin = localStorage.getItem("email") ? true : false;
       resolve(this.userlogin)
     })
   }
@@ -24,20 +24,19 @@ export class AuthService {
   }
 
   isUserLogIn(email: string, password: string) {
-    this.userlogin = true;
-    this._productsservice.getProductsData().pipe(
-      map((res: any) => {
-        res.forEach((element: any) => {
-          if (element.login.email === email && element.login.password === password) {
-            localStorage.setItem("email", email);
-            this._router.navigate(['/products']);
-            return res;
-          } else {
-            return confirm("Invalid User name Or password")
-          }
-        })
+
+    this._productsservice.getProductsData().subscribe((data) => {
+      let proutSigleobj = data.find((element: any) => {
+        return element.login?.email === email && element.login?.password === password
       })
-    ).subscribe(() => {
+      if (proutSigleobj) {
+          localStorage.setItem("email", email);
+          this._router.navigate(['/products']);
+          this.userlogin = true;
+          return proutSigleobj;
+      } else {
+        alert("Please eter pthe proper email addres")
+      }
     })
   }
 

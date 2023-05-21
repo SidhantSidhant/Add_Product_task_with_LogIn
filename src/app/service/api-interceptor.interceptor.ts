@@ -14,7 +14,7 @@ export class ApiInterceptorInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       let headersReq = req.clone({
-        headers : req.headers.set('Content-Type', 'application/json')
+        headers : req.headers.append('Content-Type', 'application/json')
       })
     return next.handle(headersReq);
   }
