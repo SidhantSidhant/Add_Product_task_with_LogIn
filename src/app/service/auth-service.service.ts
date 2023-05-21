@@ -24,7 +24,6 @@ export class AuthService {
   }
 
   isUserLogIn(email: string, password: string) {
-
     this._productsservice.getProductsData().subscribe((data) => {
       let proutSigleobj = data.find((element: any) => {
         return element.login?.email === email && element.login?.password === password
