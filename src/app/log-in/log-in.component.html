@@ -4,7 +4,7 @@
         <form [formGroup]="logInForm" (ngSubmit)="loginformSubmit()">
             <div class="form-group">
                 <label for="email"><strong>email*</strong></label>
-                <input type="text" id="email" formControlName="email"  class="form-control" placeholder="email">
+                <input type="text" id="email" formControlName="email"  class="form-control" placeholder="email : email is - sid@gmail.com">
                 <p class="text-danger" *ngIf="formControls['email']?.hasError('emailError') && formControls['email'].touched">
                     {{formControls['email'].errors?.['emailError']}}
                 </p>
@@ -12,7 +12,7 @@
             
             <div class="form-group">
                 <label for="password"><strong>password*</strong></label>
-                <input type="text" id="name" formControlName="password"  class="form-control" placeholder="password">
+                <input type="text" id="name" formControlName="password : Sid@123"  class="form-control" placeholder="password">
             </div>
             <div>
                 <button class="btn btn-primary">LogIn</button>
