@@ -14,6 +14,9 @@ export class ProductsService {
   }
 
   addProductsApiCall(body: any) {
-    return this._http.post(`http://localhost:3000/posts`, body)
+    const headersReq = new HttpHeaders({
+      "content-type" : "application/json"
+    })
+    return this._http.post(`http://localhost:3000/posts`, body ,{headers : headersReq})
   }
 }

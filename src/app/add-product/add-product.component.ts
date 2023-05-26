@@ -38,7 +38,9 @@ export class AddProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete()
+    setTimeout(()=>{
+      this.unsubscribe$.next();
+      this.unsubscribe$.complete()
+    },100)
   }
 }
